@@ -22,6 +22,7 @@ var table = new Tabulator("#example-table", {
     paginationSizeSelector: [30, 50, 100],
     ajaxURL: "/units",
     index: "id",
+    rowHeader: { formatter: "rownum", headerSort: false, hozAlign: "center", resizable: false, frozen: true },
     columns: [ //Define Table Columns
         { title: "ID", field: "id", width: 50 },
         {
