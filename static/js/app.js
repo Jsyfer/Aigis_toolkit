@@ -8,6 +8,10 @@ const cellEditor = (cell) => {
     api.update_by_id(cell)
 }
 
+const cellClick = (e, cell) => {
+    window.open("https://wikiwiki.jp" + cell.getRow().getData().info_url, "_blank");
+}
+
 
 //create Tabulator on DOM element with id "example-table"
 var table = new Tabulator("#example-table", {
@@ -26,7 +30,7 @@ var table = new Tabulator("#example-table", {
                 width: "50px",
             }
         },
-        { title: "名前", field: "unit_name", headerFilter: "input" },
+        { title: "名前", field: "unit_name", headerFilter: "input", cellClick: cellClick },
         {
             title: "リア",
             field: "rare",
