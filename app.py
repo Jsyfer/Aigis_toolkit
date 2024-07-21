@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, jsonify, render_template, request, send_from_directory
 from src.dao import *
 
 
@@ -16,6 +16,14 @@ def index():
 @app.route('/units', methods=['GET'])
 def get_all_unit():
     return select_all()
+
+
+# 获取所有视频信息
+@app.route('/update', methods=['POST'])
+def update_by_id():
+    data = request.json
+    result = update_field_by_id(data)
+    return jsonify({"result":result})
 
 
 # 提供静态文件

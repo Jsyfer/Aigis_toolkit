@@ -67,6 +67,44 @@ def insert(aigis_unit_list):
             print(e)
 
 
+def update_extra_story(unit_name_list):
+    # 创建数据库连接
+    conn = create_connection(DATABASE)
+    # 插入新数据
+    if conn is not None:
+        try:
+            cursor = conn.cursor()
+            for unit_name in unit_name_list:
+                update_sql = f"UPDATE UNIT SET has_extra_story = True WHERE unit_name = '{unit_name}';"
+                cursor.execute(update_sql)
+            conn.commit()
+            conn.close()
+        except Exception as e:
+            print(e)
+
+
+def update_field_by_id(data):
+    # 创建数据库连接
+    conn = create_connection(DATABASE)
+    result = []
+    # 插入新数据
+    if conn is not None:
+        try:
+            cursor = conn.cursor()
+            update_key = data['update_key']
+            update_field = data['update_field']
+            update_value = data['update_value']
+            update_sql = f"UPDATE UNIT SET {update_field} = {update_value} WHERE id = '{update_key}';"
+            result.append(update_sql)
+            cursor.execute(update_sql)
+            conn.commit()
+            conn.close()
+            result.append("update success!")
+        except Exception as e:
+            result.append(e)
+            print(e)
+    return result
+
 def select_all():
     # 创建数据库连接
     conn = create_connection(DATABASE)

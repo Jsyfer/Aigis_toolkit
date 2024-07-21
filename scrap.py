@@ -1,6 +1,6 @@
 import re
 from bs4 import BeautifulSoup
-from common_class import *
+from src.common_class import *
 from src.dao import * 
 
 PATH = "/Users/jsyfer/Downloads/black.html"
@@ -26,9 +26,14 @@ def __gen_unit_info_by_rare(path, rare):
     return aigis_unit_list
 
 
+def __gen_extra_story():
+    with open("extra_story_target.txt", 'r') as f:
+        lines = f.readlines()
+        lines = [line.rstrip() for line in lines]
+        update_extra_story(lines)
+
 def main():
-    aigis_unit_list = __gen_unit_info_by_rare(PATH, RARE)
-    insert(aigis_unit_list)
+    __gen_extra_story()
 
 
 if __name__ == '__main__':
