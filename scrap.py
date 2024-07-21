@@ -22,6 +22,11 @@ def __gen_unit_info_by_rare(path, rare):
                 aigis_unit.info_url = unit_info.find('a')['href']
                 aigis_unit.icon = unit_info.find('img')['src']
                 aigis_unit.rare = rare
+                aigis_unit.owned = False
+                aigis_unit.is_awakening = False
+                aigis_unit.has_extra_story = False
+                aigis_unit.complete_extra_story = False
+                aigis_unit.all_complete = False
                 aigis_unit_list.append(aigis_unit)
     return aigis_unit_list
 
