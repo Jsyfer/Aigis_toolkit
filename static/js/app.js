@@ -18,7 +18,7 @@ var table = new Tabulator("#example-table", {
     height: 1000,
     placeholder: "No Data Set",
     pagination: "local",
-    paginationSize: 30,
+    paginationSize: 100,
     paginationSizeSelector: [30, 50, 100],
     ajaxURL: "/units",
     index: "id",
@@ -36,9 +36,11 @@ var table = new Tabulator("#example-table", {
             title: "リア",
             field: "rare",
             width: 70,
-            headerFilter: true, headerFilter: "list",
+            headerFilter: "list",
             headerFilterParams: { valuesLookup: true, clearable: true }
         },
+        { title: "入手方法", field: "obtain_method", headerFilter: "list", headerFilterParams: { valuesLookup: true, clearable: true } },
+        { title: "所属", field: "property_belong", headerFilter: "list", headerFilterParams: { valuesLookup: true, clearable: true } },
         { title: "所持済", field: "owned", editor: true, formatter: "tickCross", headerFilter: "tickCross", headerFilterParams: { "tristate": true }, cellEdited: cellEditor },
         { title: "覚醒済", field: "is_awakening", editor: true, formatter: "tickCross", headerFilter: "tickCross", headerFilterParams: { "tristate": true }, cellEdited: cellEditor },
         { title: "交流クエスト", field: "has_extra_story", editor: true, formatter: "tickCross", headerFilter: "tickCross", headerFilterParams: { "tristate": true }, cellEdited: cellEditor },
@@ -46,3 +48,6 @@ var table = new Tabulator("#example-table", {
     ]
 });
 
+document.getElementById('clearFilter').onclick = () => {
+    table.clearHeaderFilter();
+}

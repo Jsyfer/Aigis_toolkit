@@ -1,29 +1,20 @@
-/*Theme the Tabulator element*/
-#example-table-theme{
-    background-color:#ccc;
-    border: 1px solid #333;
-    border-radius: 10px;
-}
-
-/*Theme the header*/
-#example-table-theme .tabulator-header {
-    background-color:#333;
-    color:#fff;
-}
-
-/*Allow column header names to wrap lines*/
-#example-table-theme .tabulator-header .tabulator-col,
-#example-table-theme .tabulator-header .tabulator-col-row-handle {
-    white-space: normal;
-}
-
-/*Color the table rows*/
-#example-table-theme .tabulator-tableholder .tabulator-table .tabulator-row{
-    color:#fff;
-    background-color: #666;
-}
-
-/*Color even rows*/
-    #example-table-theme .tabulator-tableholder .tabulator-table .tabulator-row:nth-child(even) {
-    background-color: #444;
+button{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    box-sizing: border-box;
+    font: inherit;
+    overflow: visible;
+    text-transform: none;
+    appearance: button;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    padding: 5px 10px;
+    border: 1px solid #25682a;
+    background: linear-gradient(to bottom, #3FB449 0%, #25682a 100%);
+    color: #fff;
+    font-weight: bold;
+    transition: color .3s, background .3s, opacity, .3s;
+    margin: 0 5px 10px 5px;
 }

@@ -1,3 +1,4 @@
+import re
 import sqlite3
 from src.common_class import *
 
@@ -76,6 +77,26 @@ def update_extra_story(unit_name_list):
             cursor = conn.cursor()
             for unit_name in unit_name_list:
                 update_sql = f"UPDATE UNIT SET has_extra_story = True WHERE unit_name = '{unit_name}';"
+                cursor.execute(update_sql)
+            conn.commit()
+            conn.close()
+        except Exception as e:
+            print(e)
+
+
+def update_group(unit_name_list, update_field, group):
+    # 创建数据库连接
+    conn = create_connection(DATABASE)
+    # 插入新数据
+    if conn is not None:
+        try:
+            cursor = conn.cursor()
+            for unit_name in unit_name_list:
+                obtain_method = '0'
+                if re.match(r'^[★■☆◇◆].*', unit_name):
+                    obtain_method = unit_name[0]
+                    unit_name = unit_name[1:]
+                update_sql = f"UPDATE UNIT SET {update_field} = '{group}', obtain_method = '{obtain_method}' WHERE unit_name = '{unit_name}';"
                 cursor.execute(update_sql)
             conn.commit()
             conn.close()

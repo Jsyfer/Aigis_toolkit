@@ -32,13 +32,23 @@ def __gen_unit_info_by_rare(path, rare):
 
 
 def __gen_extra_story():
-    with open("extra_story_target.txt", 'r') as f:
+    with open("scrap_input/extra_story.txt", 'r') as f:
         lines = f.readlines()
         lines = [line.rstrip() for line in lines]
         update_extra_story(lines)
 
+
+def __gen_group():
+    UPDATE_FIELD = "property_belong"
+    GROUP = "白の帝国"
+    with open("scrap_input/group.txt", 'r') as f:
+        lines = f.readlines()
+        lines = [line.rstrip() for line in lines]
+        update_group(lines, UPDATE_FIELD, GROUP )
+
+
 def main():
-    __gen_extra_story()
+    __gen_group()
 
 
 if __name__ == '__main__':
