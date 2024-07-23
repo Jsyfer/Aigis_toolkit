@@ -1,14 +1,14 @@
 const style_ok_response = () => {
-    document.querySelector("#layout_main_panel_bottom").style.backgroundColor = '#deffbd';
+    document.querySelector("#layout_main_panel_bottom").style.backgroundColor = '#005703';
     setTimeout(function () {
-        document.querySelector("#layout_main_panel_bottom").style.backgroundColor = '#fcfcfc';
+        document.querySelector("#layout_main_panel_bottom").style.backgroundColor = 'black';
     }, 1000);
 }
 
 const style_error_response = () => {
-    document.querySelector("#layout_main_panel_bottom").style.backgroundColor = '#ffc4c4';
+    document.querySelector("#layout_main_panel_bottom").style.backgroundColor = '#690000';
     setTimeout(function () {
-        document.querySelector("#layout_main_panel_bottom").style.backgroundColor = '#fcfcfc';
+        document.querySelector("#layout_main_panel_bottom").style.backgroundColor = 'black';
     }, 1000);
 }
 

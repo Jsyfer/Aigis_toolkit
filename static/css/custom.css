@@ -18,3 +18,8 @@ button{
     transition: color .3s, background .3s, opacity, .3s;
     margin: 0 5px 10px 5px;
 }
+
+#layout_main_panel_bottom {
+    color: white;
+    background-color: black;
+}
