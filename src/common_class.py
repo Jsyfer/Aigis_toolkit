@@ -15,6 +15,7 @@ class AigisUnit:
     property_qualification: str
     property_collaboration: str
     obtain_method: str
+    awakening_material: str
     owned: bool
     is_awakening: bool
     has_extra_story: bool

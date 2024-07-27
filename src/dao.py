@@ -115,7 +115,7 @@ def update_field_by_id(data):
             update_key = data['update_key']
             update_field = data['update_field']
             update_value = data['update_value']
-            update_sql = f"UPDATE UNIT SET {update_field} = {update_value} WHERE id = '{update_key}';"
+            update_sql = f"UPDATE UNIT SET {update_field} = '{update_value}' WHERE id = '{update_key}';"
             result.append(update_sql)
             cursor.execute(update_sql)
             conn.commit()

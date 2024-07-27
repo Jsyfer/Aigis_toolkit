@@ -41,6 +41,7 @@ var table = new Tabulator("#example-table", {
         },
         { title: "入手方法", field: "obtain_method", headerFilter: "list", headerFilterParams: { valuesLookup: true, clearable: true } },
         { title: "所属", field: "property_belong", headerFilter: "list", headerFilterParams: { valuesLookup: true, clearable: true } },
+        { title: "覚醒素材", field: "awakening_material", headerFilter: "input", headerFilterParams: { valuesLookup: true, clearable: true } },
         { title: "所持済", field: "owned", editor: true, formatter: "tickCross", headerFilter: "tickCross", headerFilterParams: { "tristate": true }, cellEdited: cellEditor },
         { title: "覚醒済", field: "is_awakening", editor: true, formatter: "tickCross", headerFilter: "tickCross", headerFilterParams: { "tristate": true }, cellEdited: cellEditor },
         { title: "交流クエスト", field: "has_extra_story", editor: true, formatter: "tickCross", headerFilter: "tickCross", headerFilterParams: { "tristate": true }, cellEdited: cellEditor },
