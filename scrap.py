@@ -1,4 +1,5 @@
 import re
+import time
 import requests
 from bs4 import BeautifulSoup
 from requests.adapters import HTTPAdapter
@@ -56,6 +57,9 @@ def __gen_unit_awakening_material(url):
                     if counter <= 2:
                         awakening_material = awakening_material + '、'
         return awakening_material
+    else:
+        print(f"status code:{response.status_code}")
+        time.sleep(60)
 
 
 def __gen_extra_story():
@@ -78,7 +82,9 @@ def main():
     aigis_unit_list = select_all()
     for aigis_unit in aigis_unit_list:
         print(aigis_unit.id)
-        awakening_material = __gen_unit_awakening_material('https://wikiwiki.jp' + aigis_unit.info_url)
+        awakening_material  = None
+        while awakening_material is None:
+            awakening_material = __gen_unit_awakening_material('https://wikiwiki.jp' + aigis_unit.info_url)
         data = {
             'update_key': aigis_unit.id,
             'update_field': 'awakening_material',
