@@ -14,10 +14,12 @@ class AigisUnit:
     property_season: str
     property_qualification: str
     property_collaboration: str
+    property_distance: str
+    property_sex: str
+    has_extra_story: bool
     obtain_method: str
     awakening_material: str
     owned: bool
     is_awakening: bool
-    has_extra_story: bool
     complete_extra_story: bool
     all_complete: bool

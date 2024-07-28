@@ -38,10 +38,13 @@ def initialize():
                     property_season text,
                     property_qualification text,
                     property_collaboration text,
+                    property_distance text,
+                    property_sex text,
+                    has_extra_story boolean,
                     obtain_method text,
+                    awakening_material text,
                     owned boolean,
                     is_awakening boolean,
-                    has_extra_story boolean,
                     complete_extra_story boolean,
                     all_complete boolean
                 );""")
@@ -96,7 +99,7 @@ def update_group(unit_name_list, update_field, group):
                 if re.match(r'^[★■☆◇◆].*', unit_name):
                     obtain_method = unit_name[0]
                     unit_name = unit_name[1:]
-                update_sql = f"UPDATE UNIT SET {update_field} = '{group}', obtain_method = '{obtain_method}' WHERE unit_name = '{unit_name}';"
+                update_sql = f"UPDATE UNIT SET {update_field} = '{group}', obtain_method = '{obtain_method}' WHERE unit_name = '{unit_name}' and ({update_field} is NULL or obtain_method is NULL or obtain_method <> '{obtain_method}');"
                 cursor.execute(update_sql)
             conn.commit()
             conn.close()
