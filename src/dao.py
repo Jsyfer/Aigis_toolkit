@@ -99,7 +99,7 @@ def update_group(unit_name_list, update_field, group):
                 if re.match(r'^[★■☆◇◆].*', unit_name):
                     obtain_method = unit_name[0]
                     unit_name = unit_name[1:]
-                update_sql = f"UPDATE UNIT SET {update_field} = '{group}', obtain_method = '{obtain_method}' WHERE unit_name = '{unit_name}' and ({update_field} is NULL or obtain_method is NULL or {obtain_method} <> '0');"
+                update_sql = f"UPDATE UNIT SET {update_field} = '{group}', obtain_method = '{obtain_method}' WHERE unit_name = '{unit_name}' and ({update_field} is NULL or obtain_method is NULL or obtain_method = '0');"
                 cursor.execute(update_sql)
             conn.commit()
             conn.close()
