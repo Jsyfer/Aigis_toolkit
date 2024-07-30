@@ -15,7 +15,6 @@ const cellClick = (e, cell) => {
 
 //create Tabulator on DOM element with id "example-table"
 var table = new Tabulator("#example-table", {
-    height: 1000,
     placeholder: "No Data Set",
     pagination: "local",
     paginationSize: 100,
