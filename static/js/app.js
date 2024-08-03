@@ -23,14 +23,15 @@ var table = new Tabulator("#example-table", {
     index: "id",
     rowHeader: { formatter: "rownum", headerSort: false, hozAlign: "center", resizable: false, frozen: true },
     columns: [ //Define Table Columns
-        { title: "ID", field: "id", width: 60 },
+        { title: "ID", field: "id", width: 60, frozen: true },
         {
             title: "画像", field: "icon", width: 70, formatter: "image", hozAlign: "center", formatterParams: {
                 height: "50px",
                 width: "50px",
-            }
+            },
+            frozen: true
         },
-        { title: "名前", field: "unit_name", headerFilter: "input", cellClick: cellClick },
+        { title: "名前", field: "unit_name", headerFilter: "input", cellClick: cellClick, frozen: true },
         {
             title: "リア",
             field: "rare",
