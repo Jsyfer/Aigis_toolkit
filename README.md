@@ -4,6 +4,8 @@ this is a Unit management for web game 千年戦争アイギス for personal use
 
 Unit infomation scraped from http://wikiwiki.jp/aigiszuki/
 
+![alt text](refer_img/image.png)
+
 # installation
 
 > prerequest: you need docker environment installed.
