@@ -1,19 +1,29 @@
 # Aigis_toolkit
 
-toolkit for web game 千年戦争アイギス
+this is a Unit management for web game 千年戦争アイギス for personal use.
 
-## build docker image
+Unit infomation scraped from http://wikiwiki.jp/aigiszuki/
 
-```shell
-docker build -t aigis_toolkit_image .
-```
+# installation
 
-## run with docker
+> prerequest: you need docker environment installed.
 
-```shell
-docker run -d \
-  --name aigis_toolkit \
-  -v /mnt/user/appdata/aigis_toolkit/aigis_toolkit.db:/app/aigis_toolkit.db \
-  -p 8100:8000 \
-  aigis_toolkit_image
-```
+1. rename `aigis_toolkit_sample.db` to `aigis_toolkit.db`
+
+2. build docker image
+
+   ```shell
+   docker build -t aigis_toolkit_image .
+   ```
+
+3. run with docker
+
+   Here is an example (you can change name and port for your needs)
+
+   ```shell
+   docker run -d \
+     --name aigis_toolkit \
+     -v /mnt/user/appdata/aigis_toolkit/aigis_toolkit.db:/app/aigis_toolkit.db \
+     -p 8100:8000 \
+     aigis_toolkit_image
+   ```
