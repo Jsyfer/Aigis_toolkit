@@ -4,8 +4,9 @@ from src.common_class import *
 
 DATABASE = "aigis_toolkit.db"
 
+
 def create_connection(db_file):
-    """ 创建数据库连接 """
+    """创建数据库连接"""
     conn = None
     try:
         conn = sqlite3.connect(db_file)
@@ -23,7 +24,8 @@ def initialize():
     if conn is not None:
         try:
             c = conn.cursor()
-            c.execute("""
+            c.execute(
+                """
                 CREATE TABLE IF NOT EXISTS UNIT 
                 (
                     id integer PRIMARY KEY,
@@ -47,7 +49,8 @@ def initialize():
                     is_awakening boolean,
                     complete_extra_story boolean,
                     all_complete boolean
-                );""")
+                );"""
+            )
             conn.commit()
         except Exception as e:
             print(e)
@@ -63,8 +66,15 @@ def insert(aigis_unit_list):
         try:
             cursor = conn.cursor()
             for aigis_unit in aigis_unit_list:
-                cursor.execute("""INSERT INTO UNIT (icon, unit_name, info_url, rare) VALUES(?,?,?,?);""",
-                    (aigis_unit.icon, aigis_unit.unit_name, aigis_unit.info_url, aigis_unit.rare,))
+                cursor.execute(
+                    """INSERT INTO UNIT (icon, unit_name, info_url, rare) VALUES(?,?,?,?);""",
+                    (
+                        aigis_unit.icon,
+                        aigis_unit.unit_name,
+                        aigis_unit.info_url,
+                        aigis_unit.rare,
+                    ),
+                )
             conn.commit()
             conn.close()
         except Exception as e:
@@ -95,8 +105,8 @@ def update_group(unit_name_list, update_field, group):
         try:
             cursor = conn.cursor()
             for unit_name in unit_name_list:
-                obtain_method = '0'
-                if re.match(r'^[★■☆◇◆].*', unit_name):
+                obtain_method = "0"
+                if re.match(r"^[★■☆◇◆].*", unit_name):
                     obtain_method = unit_name[0]
                     unit_name = unit_name[1:]
                 update_sql = f"UPDATE UNIT SET {update_field} = '{group}', obtain_method = '{obtain_method}' WHERE unit_name = '{unit_name}' and ({update_field} is NULL or obtain_method is NULL or obtain_method = '0');"
@@ -115,10 +125,18 @@ def update_field_by_id(data):
     if conn is not None:
         try:
             cursor = conn.cursor()
-            update_key = data['update_key']
-            update_field = data['update_field']
-            update_value = data['update_value']
-            update_sql = f"UPDATE UNIT SET {update_field} = '{update_value}' WHERE id = '{update_key}';"
+            update_key = data["update_key"]
+            update_field = data["update_field"]
+            update_value = data["update_value"]
+            if update_field in [
+                "owned",
+                "is_awakening",
+                "has_extra_story",
+                "all_complete",
+            ]:
+                update_sql = f"UPDATE UNIT SET {update_field} = {update_value} WHERE id = '{update_key}';"
+            else:
+                update_sql = f"UPDATE UNIT SET {update_field} = '{update_value}' WHERE id = '{update_key}';"
             result.append(update_sql)
             cursor.execute(update_sql)
             conn.commit()
@@ -128,6 +146,7 @@ def update_field_by_id(data):
             result.append(e)
             print(e)
     return result
+
 
 def select_all():
     # 创建数据库连接
@@ -143,4 +162,3 @@ def select_all():
             return aigis_unit_list
         except Exception as e:
             print(e)
-
